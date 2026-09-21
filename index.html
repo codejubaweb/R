@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>آلة حاسبة بسيطة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <div class="calculator-app">
+        <!-- رأس الحاسبة وأزرار التحكم -->
+        <header class="app-header">
+            <div class="brand">
+                <span class="brand-icon">🧮</span>
+                <span class="brand-title">حاسبة</span>
+            </div>
+            <div class="header-actions">
+                <button id="sound-btn" class="icon-btn" title="الصوت" aria-label="الصوت">
+                    <span class="icon" id="sound-icon">🔊</span>
+                </button>
+                <button id="history-toggle-btn" class="icon-btn" title="سجل العمليات" aria-label="سجل العمليات">
+                    <span class="icon">🕒</span>
+                </button>
+                <button id="theme-btn" class="icon-btn" title="تغيير المظهر" aria-label="تغيير المظهر">
+                    <span class="icon" id="theme-icon">☀️</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- لوحة العرض -->
+        <section class="display-container">
+            <div class="expression-row" id="expression-display" dir="ltr"></div>
+            <div class="result-row">
+                <button id="copy-btn" class="copy-btn" title="نسخ الناتج" aria-label="نسخ الناتج">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                    <span class="copy-tooltip" id="copy-tooltip">تم النسخ!</span>
+                </button>
+                <div class="current-value" id="current-display" dir="ltr">0</div>
+            </div>
+        </section>
+
+        <!-- لوحة الأزرار -->
+        <section class="keypad">
+            <!-- الصف الأول -->
+            <button type="button" class="btn btn-action" data-action="clear" id="btn-clear">AC</button>
+            <button type="button" class="btn btn-action" data-action="delete" title="مسح رقم">⌫</button>
+            <button type="button" class="btn btn-action" data-action="percent">%</button>
+            <button type="button" class="btn btn-operator" data-action="operator" data-op="÷">÷</button>
+
+            <!-- الصف الثاني -->
+            <button type="button" class="btn btn-num" data-num="7">7</button>
+            <button type="button" class="btn btn-num" data-num="8">8</button>
+            <button type="button" class="btn btn-num" data-num="9">9</button>
+            <button type="button" class="btn btn-operator" data-action="operator" data-op="×">×</button>
+
+            <!-- الصف الثالث -->
+            <button type="button" class="btn btn-num" data-num="4">4</button>
+            <button type="button" class="btn btn-num" data-num="5">5</button>
+            <button type="button" class="btn btn-num" data-num="6">6</button>
+            <button type="button" class="btn btn-operator" data-action="operator" data-op="-">-</button>
+
+            <!-- الصف الرابع -->
+            <button type="button" class="btn btn-num" data-num="1">1</button>
+            <button type="button" class="btn btn-num" data-num="2">2</button>
+            <button type="button" class="btn btn-num" data-num="3">3</button>
+            <button type="button" class="btn btn-operator" data-action="operator" data-op="+">+</button>
+
+            <!-- الصف الخامس -->
+            <button type="button" class="btn btn-num" data-action="negate">±</button>
+            <button type="button" class="btn btn-num" data-num="0">0</button>
+            <button type="button" class="btn btn-num" data-action="decimal">.</button>
+            <button type="button" class="btn btn-equals" data-action="calculate">=</button>
+        </section>
+
+        <!-- نافذة السجل -->
+        <div class="history-drawer" id="history-drawer">
+            <div class="history-header">
+                <h3>سجل العمليات</h3>
+                <div class="history-actions">
+                    <button id="clear-history-btn" class="text-btn">مسح السجل</button>
+                    <button id="close-history-btn" class="icon-btn-sm" aria-label="إغلاق">✕</button>
+                </div>
+            </div>
+            <div class="history-list" id="history-list">
+                <div class="empty-history">لا توجد عمليات سابقة</div>
+            </div>
+        </div>
+
+        <footer class="app-footer">
+            <span>يدعم لوحة المفاتيح واللمس</span>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
